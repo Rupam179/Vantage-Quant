@@ -2,7 +2,7 @@
   "rewrites": [
     {
       "source": "/api/:path*",
-      "destination": "https://vantage-quant-api.onrender.com/api/:path*"
+      "destination": "https://vantage-quant.onrender.com/api/:path*"
     }
   ]
 }
