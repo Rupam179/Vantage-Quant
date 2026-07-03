@@ -1,0 +1,103 @@
+@import "tailwindcss";
+
+@theme {
+  /* -- Color tokens -- */
+  --color-bg: #0E1A2B;            /* deep indigo-navy: primary background */
+  --color-surface: #142539;        /* panel navy */
+  --color-surface-2: #1B3049;      /* lighter card navy */
+  --color-paper: #F6F1E7;          /* warm ivory: alternating section / cards */
+  --color-paper-dim: #ECE5D4;      /* slightly deeper paper for nested cards */
+  --color-ink: #11151A;            /* near-black text on paper */
+  --color-cream: #EDE7D9;          /* soft warm text on navy */
+  --color-cream-dim: #B9C3D1;      /* muted secondary text on navy */
+  --color-marigold: #E8A33D;       /* primary accent: CTAs, highlights */
+  --color-marigold-dim: #C98A2C;
+  --color-teal: #2BA89A;           /* data accent: links, secondary CTA, chart line */
+  --color-teal-dim: #1F7E73;
+  --color-profit: #3F8F5C;         /* muted green: gains only */
+  --color-loss: #C2503D;           /* muted brick red: losses only */
+  --color-line-dark: #2A3C53;      /* hairline on navy */
+  --color-line-light: #D9CFB8;     /* hairline on paper */
+
+  /* -- Type tokens -- */
+  --font-display: "Fraunces", ui-serif, Georgia, serif;
+  --font-body: "Inter", ui-sans-serif, system-ui, sans-serif;
+  --font-mono: "JetBrains Mono", ui-monospace, "SFMono-Regular", monospace;
+}
+
+html {
+  scroll-behavior: smooth;
+}
+
+body {
+  background-color: var(--color-bg);
+  color: var(--color-cream);
+  font-family: var(--font-body);
+  -webkit-font-smoothing: antialiased;
+}
+
+/* Visible keyboard focus everywhere, regardless of element */
+:focus-visible {
+  outline: 2px solid var(--color-marigold);
+  outline-offset: 2px;
+}
+
+@media (prefers-reduced-motion: reduce) {
+  *, *::before, *::after {
+    animation-duration: 0.001ms !important;
+    animation-iteration-count: 1 !important;
+    transition-duration: 0.001ms !important;
+    scroll-behavior: auto !important;
+  }
+}
+
+/* ---------- Ticker tape marquee (signature element) ---------- */
+.ticker-track {
+  display: flex;
+  width: max-content;
+  animation: ticker-scroll 38s linear infinite;
+}
+
+@keyframes ticker-scroll {
+  from { transform: translateX(0); }
+  to { transform: translateX(-50%); }
+}
+
+.ticker-paused:hover .ticker-track {
+  animation-play-state: paused;
+}
+
+/* ---------- Quant notebook grid-paper texture ---------- */
+.grid-paper {
+  background-image:
+    linear-gradient(var(--color-line-dark) 1px, transparent 1px),
+    linear-gradient(90deg, var(--color-line-dark) 1px, transparent 1px);
+  background-size: 28px 28px;
+  background-position: -1px -1px;
+}
+
+.grid-paper-light {
+  background-image:
+    linear-gradient(rgba(17,21,26,0.06) 1px, transparent 1px),
+    linear-gradient(90deg, rgba(17,21,26,0.06) 1px, transparent 1px);
+  background-size: 24px 24px;
+}
+
+/* ---------- Numbered ledger markers for the How It Works sequence ---------- */
+.ledger-number {
+  font-family: var(--font-mono);
+  font-variant-numeric: tabular-nums;
+}
+
+/* Scrollbar tuning so the dark theme feels intentional, not default */
+::-webkit-scrollbar {
+  width: 10px;
+  height: 10px;
+}
+::-webkit-scrollbar-track {
+  background: var(--color-bg);
+}
+::-webkit-scrollbar-thumb {
+  background: var(--color-surface-2);
+  border-radius: 6px;
+}

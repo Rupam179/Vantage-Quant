@@ -1,0 +1,30 @@
+# Dependencies
+node_modules/
+client/node_modules/
+server/node_modules/
+
+# Environment variables - NEVER commit real secrets
+.env
+.env.local
+.env.*.local
+server/.env
+client/.env
+
+# Build output
+client/dist/
+client/build/
+
+# Server data (local JSON "database" + logs)
+server/data/*.json
+*.log
+npm-debug.log*
+
+# Editor / OS
+.vscode/*
+!.vscode/extensions.json
+.DS_Store
+Thumbs.db
+
+# Misc
+.cache/
+coverage/
